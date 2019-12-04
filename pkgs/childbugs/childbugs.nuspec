@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ChildBugs</id>
+    <version>1.0.4</version>
+    <title>ChildBugs</title>
+    <authors>v-aahauc</authors>
+    <owners>v-aahauc</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Functionality of WorkItem SDK utilized to create FFD tracking bugs</description>
+    <releaseNotes>Change call to official office org. Pipe out cl desc.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>fastforks ffd workitems trackingbugs</tags>
+  </metadata>
+</package>

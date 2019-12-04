@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DMQ</id>
+    <version>1.0.0</version>
+    <title>DMQ</title>
+    <authors>v-aahauc</authors>
+    <owners>v-aahauc</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Devmain Queue Health Monitor</description>
+    <releaseNotes>Initial creation</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>devmain cloudbuild</tags>
+  </metadata>
+</package>

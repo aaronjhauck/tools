@@ -39,7 +39,9 @@ call git push --set-upstream origin %BRANCH%
 goto :eof
 
 :help
-echo Usage: g [arg]
+echo Shortcut git utility for Git For Windows
+echo.
+echo   ^<^< Usage: g [arg] ^>^>
 echo.
 echo g h   help
 echo g nb  new branch
@@ -47,13 +49,13 @@ echo g su  set upstream
 echo g cb  current branch
 echo g ab  all branches
 echo g cm  checkout master
-echo g sb  checkout <branchName>
+echo g sb  checkout ^<branchName^>
 echo g gl  get pretty log
 echo g aa  add all open files
 echo g p   push to remote
 echo g pl  pull from remote
 echo g u   undo all uncommited changes
-echo g co  undo <file>
+echo g co  undo ^<file^>
 echo g s   check status of non committed files
 echo g db  delete branch
 echo g ui  use git gui

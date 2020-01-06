@@ -2,12 +2,12 @@ use strict;
 use warnings;
 use Cwd;
 
-package PBatch;
+package BatchHatch;
 
-my $text = 
+my $perlText = 
 "\@rem = '-*- Perl -*-';
 \@rem = '
-\@perl\%OPERLOPT% -w %~dpnx0 %*
+\@perl -w %~dpnx0 %*
 \@goto :exit
 ';
 
@@ -17,6 +17,17 @@ use warnings;
 
 __END__
 :exit";
+
+my $rubyText = 
+"\@rem = '-*- Ruby -*-';
+\@rem = '
+\@ruby -w %~dpnx0 %*
+\@goto :endofruby
+';
+
+
+__END__
+:endofruby";
 
 sub load {
     my $class = shift;
@@ -28,11 +39,14 @@ sub load {
 
 sub genFile {
     my $self = shift;
+    my $lang = @_;
 
     my $dir  = Cwd::getcwd;
-    my $file = "$dir\\$self->{'name'}";
+    my $file = "$dir\\$self->{'name'}.bat";
 
-    toFile( $file, $text );
+    $lang
+        ? toFile( $file, $rubyText )
+        : toFile( $file, $perlText );
     system("code $file");
 }
 

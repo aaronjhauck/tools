@@ -7,10 +7,13 @@
 use strict;
 use warnings;
 use lib "C:\\src\\tools";
-use PBatch;
+use BatchHatch;
 
-my $obj = load PBatch($ARGV[0]);
-$obj->genFile();
+my $obj = load BatchHatch($ARGV[0]);
+
+$ARGV[1] && $ARGV[1] =~ "r"
+    ? $obj->genFile(1)
+    : $obj->genFile();
 
 __END__
 :exit

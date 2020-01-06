@@ -7,12 +7,10 @@
 use strict;
 use warnings;
 use lib "C:\\src\\tools";
+use PBatch;
 
-use Honk;
-
-my $obj = load Honk("Aaron",31);
-
-print $obj->intro();
+my $obj = load PBatch($ARGV[0]);
+$obj->genFile();
 
 __END__
 :exit

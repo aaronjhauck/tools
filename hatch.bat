@@ -6,7 +6,7 @@
 
 use strict;
 use warnings;
-use lib "C:\\src\\tools";
+use lib "$ENV{MODULES}";
 use BatchHatch;
 
 my $obj = load BatchHatch($ARGV[0]);

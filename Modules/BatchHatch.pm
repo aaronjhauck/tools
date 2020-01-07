@@ -13,6 +13,7 @@ my $perlText =
 
 use strict;
 use warnings;
+use lib \"\$ENV{MODULES}\";
 
 
 __END__
@@ -31,7 +32,7 @@ __END__
 
 sub load {
     my $class = shift;
-    my $self = { 'name' => shift };
+    my $self  = { 'name' => shift };
 
     bless $self, $class;
     return $self;
@@ -53,9 +54,9 @@ sub genFile {
 sub toFile {
     my ( $file, $text ) = @_;
 
-    open( my $fh, ">", $file ) or die "Cannot open $file";
-    print $fh $text;
-    close($fh);
+    die "Cannot open $file" unless open( FILE, ">", $file );
+    print FILE $text;
+    close(FILE);
 }
 
 1;

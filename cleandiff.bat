@@ -1,13 +1,13 @@
 @rem = '-*- Perl -*-';
 @rem = '
-@perl%OPERLOPT% -w %~dpnx0 %*
+@perl -w %~dpnx0 %*
 @goto :exit
 ';
 
 use strict;
 use warnings;
-use lib '\\\\blacklodge\\tools';
-use BLUtils;
+use lib "$ENV{MODULES}";
+use Utils;
 use Bool;
 
 my $file = $ARGV[0];

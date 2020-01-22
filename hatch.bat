@@ -7,13 +7,40 @@
 use strict;
 use warnings;
 use lib "$ENV{MODULES}";
-use BatchHatch;
+use Batch;
 
-my $obj = load BatchHatch($ARGV[0]);
+my $perlText = 
+"\@rem = '-*- Perl -*-';
+\@rem = '
+\@perl -w %~dpnx0 %*
+\@goto :exit
+';
 
-$ARGV[1] && $ARGV[1] =~ "r"
-    ? $obj->genFile(1)
-    : $obj->genFile();
+use strict;
+use warnings;
+use lib \"\$ENV{MODULES}\";
+
+
+__END__
+:exit";
+
+my $rubyText = 
+"\@rem = '-*- Ruby -*-';
+\@rem = '
+\@ruby -w %~dpnx0 %*
+\@goto :endofruby
+';
+
+
+__END__
+:endofruby";
+
+my $lang = $perlText;
+$lang    = $rubyText if $ARGV[1] =~ "r";
+
+my $obj  = load Batch($ARGV[0], $lang);
+
+$obj->genFile();
 
 __END__
 :exit

@@ -33,7 +33,7 @@ sub movefile {
         File::Copy::move( $old, $new );
     }
     else {
-        File::Copy::move( $old, $new );
+        die "Operation failed! $!" unless File::Copy::move( $old, $new );
     }
 }
 

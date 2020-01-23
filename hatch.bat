@@ -8,6 +8,7 @@ use strict;
 use warnings;
 use lib "$ENV{MODULES}";
 use Batch;
+use Cwd;
 
 my $perlText = 
 "\@rem = '-*- Perl -*-';
@@ -36,11 +37,13 @@ __END__
 :endofruby";
 
 my $lang = $perlText;
-$lang    = $rubyText if $ARGV[1] =~ "r";
+$lang    = $rubyText if $ARGV[1] && $ARGV[1] =~ "r";
 
-my $obj  = load Batch($ARGV[0], $lang);
+my $obj  = load Batch($ARGV[0], $lang, Cwd::getcwd);
 
-$obj->genFile();
+my $file = $obj->genFile();
+
+system("code $file");
 
 __END__
 :exit

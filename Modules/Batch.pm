@@ -1,6 +1,5 @@
 use strict;
 use warnings;
-use Cwd;
 
 package Batch;
 
@@ -9,6 +8,7 @@ sub load {
     my $self  = { 
         'name' => shift,
         'text' => shift,
+        'dir'  => shift,
         };
 
     bless $self, $class;
@@ -18,11 +18,11 @@ sub load {
 sub genFile {
     my $self = shift;
 
-    my $dir  = Cwd::getcwd;
+    my $dir  = $self->{'dir'};
     my $file = "$dir\\$self->{'name'}.bat";
 
     toFile( $file, $self->{'text'} );
-    system("code $file");
+    return $file;
 }
 
 sub toFile {

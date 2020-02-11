@@ -21,8 +21,8 @@ EOM
 }
 
 my $new = $ARGV[0];           # get name of new alias
-die Usage() if ( !@ARGV );    # die if there is no command to alias
 shift @ARGV;                  # grab whatever is left in the prompt
+die Usage() if ( !@ARGV );    # die if there is no command to alias
 
 my $dir  = "C:\\src\\tools\\aliases";
 my $file = "$dir\\$new.bat";

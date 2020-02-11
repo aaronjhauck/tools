@@ -9,8 +9,14 @@ use warnings;
 use lib "$ENV{MODULES}";
 use Batch;
 use Cwd;
+use Getopt::Long;
+use vars qw/$ruby/;
 
-my $perlText = 
+GetOptions( 'r' => sub { $ruby++ } );
+
+my %languages;
+
+$languages{'perlText'} = 
 "\@rem = '-*- Perl -*-';
 \@rem = '
 \@perl -w %~dpnx0 %*
@@ -25,7 +31,7 @@ use lib \"\$ENV{MODULES}\";
 __END__
 :exit";
 
-my $rubyText = 
+$languages{'rubyText'} = 
 "\@rem = '-*- Ruby -*-';
 \@rem = '
 \@ruby -w %~dpnx0 %*
@@ -36,10 +42,13 @@ my $rubyText =
 __END__
 :endofruby";
 
-my $lang = $perlText;
-$lang    = $rubyText if $ARGV[1] && $ARGV[1] =~ "r";
+my $lang;
 
-my $obj  = load Batch($ARGV[0], $lang, Cwd::getcwd);
+$ruby
+    ? ( $lang = $languages{'rubyText'} )
+    : ( $lang = $languages{'perlText'} );
+
+my $obj = load Batch( $ARGV[0], $lang, Cwd::getcwd );
 
 my $file = $obj->genFile();
 

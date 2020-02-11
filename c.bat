@@ -4,6 +4,7 @@
 if %1==""      call chdir C:\src
 if %1==src     call chdir C:\src
 if %1==t       call chdir C:\src\tools
+if %1==node    call chdir C:\src\node
 if %1==ms      call chdir C:\old\ms_tools
 if %1==asd     call chdir C:\src\asdtools
 if %1==local   call chdir C:\local

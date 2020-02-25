@@ -8,6 +8,7 @@ require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(
   PrintStd
+  PrintLine
   PrintWrn
   PrintErr
   FormatList
@@ -22,6 +23,7 @@ our @EXPORT = qw(
 
 # --- Formatting ---
 sub PrintStd   { print map { ( $_, "\n" ) } @_; }
+sub PrintLine  { print map { ( $_ ) } @_; }
 sub PrintWrn   { print "Warning: ", map { ( $_, "\n" ) } @_; }
 sub PrintErr   { print "Error: ", map { ( $_, "\n" ) } @_; }
 sub FormatList { print "$_\n" for @_; }

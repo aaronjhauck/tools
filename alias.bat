@@ -24,11 +24,11 @@ my $new = $ARGV[0];           # get name of new alias
 shift @ARGV;                  # grab whatever is left in the prompt
 die Usage() if ( !@ARGV );    # die if there is no command to alias
 
-my $dir  = "C:\\src\\tools\\aliases";
+my $dir  = "C:\\src\\gh\\tools\\aliases";
 my $file = "$dir\\$new.bat";
-my $text = "@ARGV\n";
+my $text = "\@ECHO OFF\n@ARGV\n";
 
-for (@ARGV) { $text = "call @ARGV\n" if ( $_ =~ m/\.exe/ ) }
+for (@ARGV) { $text = "\@ECHO OFF\ncall @ARGV\n" if ( $_ =~ m/\.exe/ ) }
 
 if (-e $file) {
     my $contents = `type $file`;
@@ -43,6 +43,6 @@ if (-e $file) {
 my $alias = load Batch( $new, $text, $dir );
 $alias->genFile();
 
-PrintStd("Saved. Alias $new => $text");
+PrintLine("Saved. Alias => \"$new\"\n\n$text");
 __END__
 :exit

@@ -14,6 +14,11 @@ if %1==magic     call chdir C:\src\gh\magic-bot
 if %1==tools     call chdir C:\src\gh\tools
 if %1==inventory call chdir C:\src\gh\inventory
 
+::databases
+if %1==bijoe     call chdir C:\src\databases\bijoe
+if %1==edw       call chdir C:\src\databases\edw_datamart
+if %1==cc        call chdir C:\src\databases\controlcenter
+
 ::gitlab
 ::::azuremart
 if %1==gl        call chdir C:\src\gl
@@ -24,7 +29,7 @@ if %1==ssas      call chdir C:\src\gl\azuremart\SSAS
 if %1==ssrs      call chdir C:\src\gl\azuremart\SSRS
 if %1==azt       call chdir C:\src\gl\azuremart\Tools
 ::::bijoe
-if %1==bijoe     call chdir C:\src\gl\bi-joe
+if %1==biweb     call chdir C:\src\gl\bi-joe
 ::::dtools
 if %1==dtools    call chdir C:\src\gl\dtools
 ::::bin

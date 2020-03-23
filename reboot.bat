@@ -1,3 +1,0 @@
-@ECHO OFF
-ECHO Rebooting %COMPUTERNAME%...
-shutdown /r /m \\%COMPUTERNAME%

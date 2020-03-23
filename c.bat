@@ -7,6 +7,7 @@ if %1==root      call chdir C:\src
 if %1==node      call chdir C:\src\node
 if %1==ms        call chdir C:\old\ms_tools
 if %1==local     call chdir C:\src\local
+if %1==repos     call chdir %USERPROFILE%\source\repos
 
 ::github
 if %1==gh        call chdir C:\src\gh
@@ -15,6 +16,8 @@ if %1==tools     call chdir C:\src\gh\tools
 if %1==inventory call chdir C:\src\gh\inventory
 
 ::databases
+if %1==dbs       call chdir C:\src\databases
+if %1==cq        call chdir C:\src\databases\CQ_Datamart
 if %1==bijoe     call chdir C:\src\databases\bijoe
 if %1==edw       call chdir C:\src\databases\edw_datamart
 if %1==cc        call chdir C:\src\databases\controlcenter
@@ -22,7 +25,7 @@ if %1==cc        call chdir C:\src\databases\controlcenter
 ::gitlab
 ::::azuremart
 if %1==gl        call chdir C:\src\gl
-if %1==cc        call chdir C:\src\gl\azuremart\ControlCenter
+if %1==concen    call chdir C:\src\gl\azuremart\ControlCenter
 if %1==db        call chdir C:\src\gl\azuremart\Databases
 if %1==scripts   call chdir C:\src\gl\azuremart\Scripts
 if %1==ssas      call chdir C:\src\gl\azuremart\SSAS

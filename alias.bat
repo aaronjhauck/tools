@@ -24,7 +24,7 @@ my $new = $ARGV[0];           # get name of new alias
 shift @ARGV;                  # grab whatever is left in the prompt
 die Usage() if ( !@ARGV );    # die if there is no command to alias
 
-my $dir  = "C:\\src\\gh\\tools\\aliases";
+my $dir  = "$ENV{ALIASDIR}";
 my $file = "$dir\\$new.bat";
 my $text = "\@ECHO OFF\n@ARGV\n";
 

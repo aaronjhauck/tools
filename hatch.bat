@@ -1,6 +1,6 @@
 @rem = '-*- Perl -*-';
 @rem = '
-@perl%OPERLOPT% -w %~dpnx0 %*
+@perl -w %~dpnx0 %*
 @goto :exit
 ';
 

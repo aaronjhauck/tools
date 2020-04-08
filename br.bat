@@ -1,6 +1,6 @@
 @rem = '-*- Ruby -*-';
 @rem = '
-@ruby%ORUBYOPT% -w %~dpnx0 %*
+@ruby -w %~dpnx0 %*
 @goto :endofruby
 ';
 

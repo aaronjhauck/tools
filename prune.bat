@@ -24,6 +24,10 @@ system("g cm > nul 2>&1");
 #--- Get list of branches ---#
 my @branches = `g ab`;
 
+#--- Count branches not master ---#
+my $count = scalar @branches - 1;
+PrintStd("### Found $count branches ###");
+
 #--- Loop branches, offer to remove ---#
 foreach my $b (@branches) {
 
@@ -36,14 +40,13 @@ foreach my $b (@branches) {
     # Strip trailing whitespace
     $b =~ s/\s+$//g;
 
-    if ( Prompt("Found branch: \"$b\"\nRemove? ") ) {
+    if ( Prompt("Branch: \"$b\" - Remove? [Y/N]") ) {
         unless ( Success( system("g db $b") ) ) {
             PrintErr("Unable to delete git branch: $b");
             NewLine();
         }
     }
 }
-system("g pl > nul 2>&1");
 
 __END__
 :exit

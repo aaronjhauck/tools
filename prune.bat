@@ -26,7 +26,7 @@ my @branches = `g ab`;
 
 #--- Count branches not master ---#
 my $count = scalar @branches - 1;
-PrintStd("### Found $count branches ###");
+PrintStd("Found $count branches eligable for removal");
 
 #--- Loop branches, offer to remove ---#
 foreach my $b (@branches) {
@@ -34,13 +34,10 @@ foreach my $b (@branches) {
     # Skip master branch
     next if ( $b =~ m/\*\smaster/ );
 
-    # Strip leading whitespace
-    $b =~ s/^\s+//g;
+    # Strip leading/trailing whitespace
+    $b =~ s/^\s+|\s+$//g;
 
-    # Strip trailing whitespace
-    $b =~ s/\s+$//g;
-
-    if ( Prompt("Branch: \"$b\" - Remove? [Y/N]") ) {
+    if ( Prompt("Branch: \'$b\' - Remove? [Y/N]") ) {
         unless ( Success( system("g db $b") ) ) {
             PrintErr("Unable to delete git branch: $b");
             NewLine();
